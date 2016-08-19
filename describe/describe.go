@@ -53,15 +53,7 @@ func Acl(svc *ec2.EC2) (acls *ec2.DescribeNetworkAclsOutput){
   return
 }
 
-func AZ() {
-
-	sess, err := session.NewSession()
-	if err != nil {
-		fmt.Println("failed to create session,", err)
-		return
-	}
-
-	svc := ec2.New(sess)
+func Az(svc *ec2.EC2) (azs *ec2.DescribeAvailabilityZonesOutput){
 
 	params := &ec2.DescribeAvailabilityZonesInput{
 		DryRun: aws.Bool(false),
@@ -76,18 +68,11 @@ func AZ() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	azs = resp
+  return
 }
 
-func Customer_gateway() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Customer_gateway(svc *ec2.EC2) (customer_gateways *ec2.DescribeCustomerGatewaysOutput){
 
   params := &ec2.DescribeCustomerGatewaysInput{
     DryRun: aws.Bool(false),
@@ -102,18 +87,11 @@ func Customer_gateway() {
   }
 
   // Pretty-print the response data.
-  fmt.Println(resp)
+  customer_gateways = resp
+  return
 }
 
-func Dhcp() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Dhcp(svc *ec2.EC2) (dhcps *ec2.DescribeDhcpOptionsOutput){
 
   params := &ec2.DescribeDhcpOptionsInput{
     DryRun: aws.Bool(false),
@@ -128,18 +106,11 @@ func Dhcp() {
   }
 
   // Pretty-print the response data.
-  fmt.Println(resp)
+  dhcps = resp
+  return
 }
 
-func Eip() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Eip(svc *ec2.EC2) (eips *ec2.DescribeAddressesOutput){
 
   params := &ec2.DescribeAddressesInput{
     DryRun: aws.Bool(false),
@@ -154,18 +125,11 @@ func Eip() {
   }
 
   // Pretty-print the response data.
-  fmt.Println(resp)
+  eips = resp
+  return
 }
 
-func Flowlog() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Flowlog(svc *ec2.EC2) (flowlogs *ec2.DescribeFlowLogsOutput){
 
   params := &ec2.DescribeFlowLogsInput{
       MaxResults: aws.Int64(10),
@@ -180,18 +144,11 @@ func Flowlog() {
   }
 
   // Pretty-print the response data.
-  fmt.Println(resp)
+  flowlogs = resp
+  return
 }
 
-func Igw() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Igw(svc *ec2.EC2) (igws *ec2.DescribeInternetGatewaysOutput){
 
 	params := &ec2.DescribeInternetGatewaysInput{
 	  DryRun: aws.Bool(false),
@@ -206,18 +163,11 @@ func Igw() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	igws = resp
+  return
 }
 
-func Image() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Image(svc *ec2.EC2) (images *ec2.DescribeImagesOutput){
 
   params := &ec2.DescribeImagesInput{
     DryRun: aws.Bool(false),
@@ -232,18 +182,11 @@ func Image() {
   }
 
   // Pretty-print the response data.
-  fmt.Println(resp)
+  images = resp
+  return
 }
 
-func Instance() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Instance(svc *ec2.EC2) (instances *ec2.DescribeInstancesOutput){
 
 	params := &ec2.DescribeInstancesInput{
 	  DryRun: aws.Bool(false),
@@ -259,18 +202,11 @@ func Instance() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	instances = resp
+  return
 }
 
-func Nat() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Nat(svc *ec2.EC2) (nats *ec2.DescribeNatGatewaysOutput){
 
 	params := &ec2.DescribeNatGatewaysInput{
 		MaxResults: aws.Int64(100),
@@ -285,18 +221,11 @@ func Nat() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	nats = resp
+  return
 }
 
-func Nic() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Nic(svc *ec2.EC2) (nics *ec2.DescribeNetworkInterfacesOutput){
 
 	params := &ec2.DescribeNetworkInterfacesInput{
 		DryRun: aws.Bool(false),
@@ -311,18 +240,11 @@ func Nic() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	nics = resp
+  return
 }
 
-func Placement_group() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Placement_group(svc *ec2.EC2) (placement_groups *ec2.DescribePlacementGroupsOutput){
 
   params := &ec2.DescribePlacementGroupsInput{
     DryRun: aws.Bool(false),
@@ -337,11 +259,12 @@ func Placement_group() {
   }
 
   // Pretty-print the response data.
-  fmt.Println(resp)
+  placement_groups = resp
+  return
 }
 
-func Region() (regions *ec2.DescribeRegionsOutput) {
-
+func Region() (regions *ec2.DescribeRegionsOutput){
+  
   sess, err := session.NewSession()
   if err != nil {
     fmt.Println("failed to create session,", err)
@@ -367,15 +290,7 @@ func Region() (regions *ec2.DescribeRegionsOutput) {
   return
 }
 
-func Route_table() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Route_table(svc *ec2.EC2) (route_tables *ec2.DescribeRouteTablesOutput){
 
 	params := &ec2.DescribeRouteTablesInput{
 	  DryRun: aws.Bool(false),
@@ -390,18 +305,11 @@ func Route_table() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	route_tables = resp
+  return
 }
 
-func Security_group() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Security_group(svc *ec2.EC2) (security_groups *ec2.DescribeSecurityGroupsOutput){
 
 	params := &ec2.DescribeSecurityGroupsInput{
 	  DryRun: aws.Bool(false),
@@ -416,18 +324,11 @@ func Security_group() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	security_groups = resp
+  return
 }
 
-func Snapshot() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Snapshot(svc *ec2.EC2) (snapshots *ec2.DescribeSnapshotsOutput){
 
 	params := &ec2.DescribeSnapshotsInput{
 	  DryRun: aws.Bool(false),
@@ -442,18 +343,11 @@ func Snapshot() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	snapshots = resp
+  return
 }
 
-func Spot_price() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Spot_price(svc *ec2.EC2) (spot_prices *ec2.DescribeSpotPriceHistoryOutput){
 
 	params := &ec2.DescribeSpotPriceHistoryInput{
 	  DryRun: aws.Bool(false),
@@ -469,18 +363,11 @@ func Spot_price() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	spot_prices = resp
+  return
 }
 
-func Volume() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Volume(svc *ec2.EC2) (volumes *ec2.DescribeVolumesOutput){
 
 	params := &ec2.DescribeVolumesInput{
 	  DryRun: aws.Bool(false),
@@ -496,18 +383,11 @@ func Volume() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	volumes = resp
+  return
 }
 
-func Subnet() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Subnet(svc *ec2.EC2) (subnets *ec2.DescribeSubnetsOutput){
 
 	params := &ec2.DescribeSubnetsInput{
 	  DryRun: aws.Bool(false),
@@ -522,18 +402,11 @@ func Subnet() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	subnets = resp
+  return
 }
 
-func Tag() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Tag(svc *ec2.EC2) (tags *ec2.DescribeTagsOutput){
 
 	params := &ec2.DescribeTagsInput{
 	  DryRun: aws.Bool(false),
@@ -549,18 +422,11 @@ func Tag() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	tags = resp
+  return
 }
 
-func Vpn_gateway() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Vpn_gateway(svc *ec2.EC2) (vpn_gateways *ec2.DescribeVpnGatewaysOutput){
 
 	params := &ec2.DescribeVpnGatewaysInput{
 	  DryRun: aws.Bool(false),
@@ -575,18 +441,11 @@ func Vpn_gateway() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	vpn_gateways = resp
+  return
 }
 
-func Vpn_connection() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Vpn_connection(svc *ec2.EC2) (vpn_connections *ec2.DescribeVpnConnectionsOutput){
 
 	params := &ec2.DescribeVpnConnectionsInput{
 	  DryRun: aws.Bool(false),
@@ -601,18 +460,11 @@ func Vpn_connection() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	vpn_connections = resp
+  return
 }
 
-func Vpc_peer() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Vpc_peer(svc *ec2.EC2) (vpc_peers *ec2.DescribeVpcPeeringConnectionsOutput){
 
 	params := &ec2.DescribeVpcPeeringConnectionsInput{
 	  DryRun: aws.Bool(false),
@@ -627,18 +479,11 @@ func Vpc_peer() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	vpc_peers = resp
+  return
 }
 
-func Vpc() {
-
-  sess, err := session.NewSession()
-  if err != nil {
-    fmt.Println("failed to create session,", err)
-    return
-  }
-
-  svc := ec2.New(sess)
+func Vpc(svc *ec2.EC2) (vpcs *ec2.DescribeVpcsOutput){
 
 	params := &ec2.DescribeVpcsInput{
 	  DryRun: aws.Bool(false),
@@ -653,6 +498,7 @@ func Vpc() {
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(resp)
+	vpcs = resp
+  return
 }
 
