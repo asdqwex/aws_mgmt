@@ -19,8 +19,8 @@ func main() {
 		}
 		svc := ec2.New(sess)
 
-		account_attrs := describe.Account(svc)
-		fmt.Println(account_attrs)
+		//account_attrs := describe.Account(svc)
+		//fmt.Println(account_attrs)
 
 		//acls := describe.Acl(svc)
 		//fmt.Println(acls)
@@ -46,8 +46,8 @@ func main() {
 		//images := describe.Image(svc)
 		//fmt.Println(images)
 
-		// instances := describe.Instance(svc)
-		// fmt.Println(instances)
+		instances := describe.Instance(svc)
+		fmt.Println(instances)
 
 		//nats := describe.Nat(svc)
 		//fmt.Println(nats)
@@ -85,7 +85,7 @@ func main() {
 		//vpn_connections := describe.Vpn_connection(svc)
 		//fmt.Println(vpn_connections)
 
-		//vpc_peers := describe.pc_peer(svc)
+		//vpc_peers := describe.vpc_peer(svc)
 		//fmt.Println(vpc_peers)
 
 		//vpcs := describe.Vpc(svc)

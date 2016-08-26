@@ -5,8 +5,26 @@ import (
 
 "github.com/aws/aws-sdk-go/aws"
 "github.com/aws/aws-sdk-go/service/ec2"
+"github.com/aws/aws-sdk-go/service/cloudformation"
 "github.com/aws/aws-sdk-go/aws/session"
 )
+
+func Cloudformation(svc *cloudformation.CloudFormation) (cloudformations *cloudformation.DescribeStacksOutput){
+
+  params := &cloudformation.DescribeStacksInput{}
+  resp, err := svc.DescribeStacks(params)
+
+  if err != nil {
+      // Print the error, cast err to awserr.Error to get the Code and
+      // Message from an error.
+      fmt.Println(err.Error())
+      return
+  }
+
+  // Pretty-print the response data.
+  cloudformations = resp
+  return
+}
 
 func Account(svc *ec2.EC2) (attributes *ec2.DescribeAccountAttributesOutput){
 
@@ -167,10 +185,13 @@ func Igw(svc *ec2.EC2) (igws *ec2.DescribeInternetGatewaysOutput){
   return
 }
 
-func Image(svc *ec2.EC2) (images *ec2.DescribeImagesOutput){
+func Image(svc *ec2.EC2, owner string) (images *ec2.DescribeImagesOutput){
 
   params := &ec2.DescribeImagesInput{
     DryRun: aws.Bool(false),
+    Owners: []*string{
+      aws.String(owner),
+    },
   }
   resp, err := svc.DescribeImages(params)
 
@@ -191,6 +212,15 @@ func Instance(svc *ec2.EC2) (instances *ec2.DescribeInstancesOutput){
 	params := &ec2.DescribeInstancesInput{
 	  DryRun: aws.Bool(false),
 	  MaxResults: aws.Int64(100),
+    Filters: []*ec2.Filter{
+        &ec2.Filter{
+            Name: aws.String("instance-state-name"),
+            Values: []*string{
+                aws.String("running"),
+                aws.String("pending"),
+            },
+        },
+    },
 	}
 	resp, err := svc.DescribeInstances(params)
 
@@ -264,8 +294,8 @@ func Placement_group(svc *ec2.EC2) (placement_groups *ec2.DescribePlacementGroup
 }
 
 func Region() (regions *ec2.DescribeRegionsOutput){
-  
-  sess, err := session.NewSession()
+
+  sess, err := session.NewSession(&aws.Config{Region: aws.String(`us-west-2`)})
   if err != nil {
     fmt.Println("failed to create session,", err)
     return
