@@ -256,11 +256,8 @@ func Placement_group(svc *ec2.EC2) (placement_groups *ec2.DescribePlacementGroup
 
 func Region() (regions *ec2.DescribeRegionsOutput){
 
-<<<<<<< HEAD
   sess, err := session.NewSession(&aws.Config{Region: aws.String(`us-west-2`)})
-=======
   sess, err := session.NewSession()
->>>>>>> b3d36fafb8044bd8b74830377c77d217ac409831
   if err != nil {
     fmt.Println("failed to create session,", err)
     return
